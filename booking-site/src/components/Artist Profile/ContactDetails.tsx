@@ -2,7 +2,7 @@ const ContactDetails: React.FC<{}> = () => {
   // Dummy contact details
   const contactInfo = [
     "Email: general.booking.limbo@gmail.com",
-    "Social Media: @egorg1.techno",
+    "Social Media: @egorg.techno",
   ];
 
   return (
