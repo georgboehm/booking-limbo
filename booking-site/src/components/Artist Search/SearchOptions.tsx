@@ -2,11 +2,12 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import BPMSlider from "./BPMSlider";
 import Button from "../Base components/Button";
 import { useNavigate } from "react-router-dom";
+import { EVENT_TYPES, GENRES } from "../../constants/SEARCHOPTIONS";
 
 type SearchOptionsForm = {
   genre: string;
   bpmRange: number[];
-  eventType: "";
+  eventType: string;
 };
 
 const SearchOptions: React.FC<{}> = () => {
@@ -16,9 +17,9 @@ const SearchOptions: React.FC<{}> = () => {
     formState: { errors },
   } = useForm<SearchOptionsForm>({
     defaultValues: {
-      genre: "",
+      genre: GENRES[0],
       bpmRange: [120, 150],
-      eventType: "",
+      eventType: EVENT_TYPES[0],
     },
   });
 
@@ -29,34 +30,42 @@ const SearchOptions: React.FC<{}> = () => {
     if (false) {
       console.log("Search options: ", data);
     } else {
+      console.log("Search options: ", data);
       navigate("/user");
     }
   };
 
   return (
-    <div className="w-full flex justify-center flex-col">
+    <div className="w-full">
       <div className="mt-10">
         <form>
-          <div className="flex w-full justify-center">
+          <div>
             <div className="p-4">
-              <div className="mb-4 text-white font-sans">Genre</div>
+              <div className="mb-4 text-white font-sans font-bold">Genre</div>
               <Controller
                 control={control}
                 name={"genre"}
                 render={({ field: { onChange, value } }) => {
                   return (
-                    <input
-                      className="w-full pl-2"
-                      placeholder="Genre"
-                      onChange={onChange}
+                    <select
                       value={value}
-                    />
+                      onChange={onChange}
+                      className="border border-gray-300 bg-white text-gray-900 appearance-none block w-full rounded-md py-3 px-4 focus:border-blue-500 focus:outline-none"
+                    >
+                      {GENRES.map((genre, index) => (
+                        <option key={index} value={genre}>
+                          {genre}
+                        </option>
+                      ))}
+                    </select>
                   );
                 }}
               />
             </div>
             <div className="p-4">
-              <div className="mb-4 text-white font-sans">Beats per minute</div>
+              <div className="mb-4 text-white font-sans font-bold">
+                Beats per minute
+              </div>
               <Controller
                 control={control}
                 name={"bpmRange"}
@@ -68,19 +77,26 @@ const SearchOptions: React.FC<{}> = () => {
               />
             </div>
             <div className="p-4">
-              <div className="mb-4 text-white font-sans">Event type</div>
+              <div className="mb-4 text-white font-sans font-bold">
+                Event type
+              </div>
               <div>
                 <Controller
                   control={control}
                   name={"eventType"}
                   render={({ field: { onChange, value } }) => {
                     return (
-                      <input
-                        className="w-full pl-2"
-                        placeholder="Event type"
-                        onChange={onChange}
+                      <select
                         value={value}
-                      />
+                        onChange={onChange}
+                        className="border border-gray-300 bg-white text-gray-900 appearance-none block w-full rounded-md py-3 px-4 focus:border-blue-500 focus:outline-none"
+                      >
+                        {EVENT_TYPES.map((eventType, index) => (
+                          <option key={index} value={eventType}>
+                            {eventType}
+                          </option>
+                        ))}
+                      </select>
                     );
                   }}
                 />
