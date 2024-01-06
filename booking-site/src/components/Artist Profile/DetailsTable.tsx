@@ -1,6 +1,4 @@
-import React from "react";
-
-const DetailsTable = () => {
+const DetailsTable: React.FC<{}> = () => {
   const djDetails = {
     Genre: "Techno/Trance",
     "BPM Comfort Zone": "150-170 BPM",
