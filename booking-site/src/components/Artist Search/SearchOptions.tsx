@@ -1,10 +1,11 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import BPMSlider from "./BPMSlider";
 import Button from "../Base components/Button";
-import { useNavigate } from "react-router-dom";
 import { EVENT_TYPES, GENRES } from "../../constants/SEARCHOPTIONS";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
-type SearchOptionsForm = {
+export type SearchOptionsForm = {
   genre: string;
   bpmRange: number[];
   eventType: string;
@@ -25,14 +26,12 @@ const SearchOptions: React.FC<{}> = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<SearchOptionsForm> = (data) => {
-    // NOTE: Planned for 1.0
-    if (false) {
-      console.log("Search options: ", data);
-    } else {
-      console.log("Search options: ", data);
-      navigate("/user");
-    }
+  const onSubmit: SubmitHandler<SearchOptionsForm> = (
+    data: SearchOptionsForm
+  ) => {
+    navigate(
+      `/browse?genre=${data.genre}&bpm_low=${data.bpmRange[0]}&bpm_high=${data.bpmRange[1]}&event_type=${data.eventType}`
+    );
   };
 
   return (

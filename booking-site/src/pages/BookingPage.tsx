@@ -53,7 +53,7 @@ const BookingPage: React.FC<{}> = () => {
           );
         });
     } else {
-      throw new Error("REACT_APP_BOOKING_API_URL not set!");
+      throw new Error("API_URL not set!");
     }
   };
 
