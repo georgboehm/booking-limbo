@@ -6,7 +6,7 @@ const HomePage: React.FC<{}> = () => {
     <div className="flex flex-col mt-14 h-screen">
       <Header />
       <div className="flex flex-col justify-between items-center h-full bg-gray-400">
-        <div className="w-full max-w-[600px]">
+        <div className="w-full max-w-[600px] p-4">
           <div className="mt-20 text-white text-[30px] w-full justify-center flex">
             Gear up your next event with local artists.
           </div>
