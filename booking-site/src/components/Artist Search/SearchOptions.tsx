@@ -2,7 +2,6 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import BPMSlider from "./BPMSlider";
 import Button from "../Base components/Button";
 import { EVENT_TYPES, GENRES } from "../../constants/SEARCHOPTIONS";
-import axios from "axios";
 import { useNavigate } from "react-router";
 
 export type SearchOptionsForm = {
