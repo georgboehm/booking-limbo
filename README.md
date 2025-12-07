@@ -1,1 +1,1 @@
-Visit https://booking-limbo.com/
+Previously hosted under https://booking-limbo.com/, currently not live
